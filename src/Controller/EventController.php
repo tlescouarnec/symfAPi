@@ -6,7 +6,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+Use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Eventcontroller.
@@ -23,6 +23,30 @@ class EventController extends FOSRestController
     public function createEvent(Request $request)
     {
         $view = $this->view("Hello world", 200);
+        return $this->handleView($view);
+    }
+
+    /**
+     * Create an event
+     * @Rest\Put("/edit/{eventId}")
+     * 
+     * @return Response
+     */
+    public function editEvent(int $eventId, Request $request)
+    {
+        $view = $this->view("edit", 200);
+        return $this->handleView($view);
+    }
+
+        /**
+     * Create an event
+     * @Rest\Delete("/delete/{eventId}")
+     * 
+     * @return Response
+     */
+    public function deleteEvent(int $eventId, Request $request)
+    {
+        $view = $this->view("delete", 200);
         return $this->handleView($view);
     }
 }
