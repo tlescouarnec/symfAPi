@@ -2,27 +2,28 @@
 
 namespace App\Controller;
 
+use App\Db\ApplicationSchema\EventModel;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+Use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Eventcontroller.
- * @Route("/",name="apiEvent")
+ * CreateEventcontroller.
+ * @Route("/create",name="create_event")
  */
-class EventController extends FOSRestController
+class CreateEventController extends FOSRestController
 {
     /**
      * Create an event
-     * @Rest\Post("/create")
+     * @Rest\Post("/")
      * 
      * @return Response
      */
     public function createEvent(Request $request)
     {
-        $view = $this->view("Hello world", 200);
+        $view = $this->view('CREATE controller', 200);
         return $this->handleView($view);
     }
 }
