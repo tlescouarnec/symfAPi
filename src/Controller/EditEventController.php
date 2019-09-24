@@ -11,20 +11,43 @@ Use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * EditEventcontroller.
- * @Route("/edit",name="edit_event")
+ * @Route("/event",name="edit_event")
  */
 class EditEventController extends FOSRestController
 {
 
     /**
-     * edit an events
-     * @Rest\Put("/{eventId}")
+     * Edit an events
+     * @Rest\Put("/edit/{eventId}")
      * 
      * @return Response
      */
-    public function editEvents(Request $request)
+    public function editEvents(int $eventId, Request $request)
     {
-        $view = $this->view('EDIT controller', 200);
+        $event_model = $this->get('pomm')
+            ->getDefaultSession()
+            ->getModel(EventModel::class);
+
+        $event = $event_model->findByPk(['event_id' => $eventId]);
+
+        if ($event) {
+
+            //Change the EventModel values and update it
+            $event 
+                ->setName($request->get('name'))
+                ->setTimespan('[' . $request->get('beginDate') . ',' . $request->get('endDate') . ']')
+                ->setUpdated_at(date("Y-m-d H:i:s"));
+
+                $event_model->updateOne(
+                    $event,
+                    ['name', 'timespan', 'updated_at']
+                );
+
+            $view = $this->view($event, 200);
+        } else {
+            $view = $this->view("No event with this id", 404);
+        }
+
         return $this->handleView($view);
     }
 }

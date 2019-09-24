@@ -1,10 +1,10 @@
 INSERT INTO application.event ( name, max_registration, timespan)
 VALUES
   (
-   '"fr"=>"Halloween", "en"=>"Halloween"', 10, '["2019-10-31 00:00:00","2019-10-31 00:00:00")'
+   "Halloween", 10, '["2019-10-31 00:00:00","2019-11-01 00:00:00"]'
   ),
    (
-   '"fr"=>"Noel", "en"=>"Noel"', 5, '["2019-12-24 00:00:00","2019-12-25 00:00:00")'
+   "Noel", 5, '["2019-12-24 00:00:00","2019-12-25 00:00:00"]'
   );
 
 INSERT INTO application.register ( event_id, lastname, firstname, email, phone)
