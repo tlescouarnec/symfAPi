@@ -38,7 +38,7 @@ class Event extends RowStructure
             ->addField('updated_at', 'timestamp')
             ->addField('name', 'varchar')
             ->addField('timespan', 'tsrange')
-            ->addField('max_registration', 'int4')
+            ->addField('max_register', 'int4')
             ;
     }
 }

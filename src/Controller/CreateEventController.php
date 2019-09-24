@@ -27,8 +27,8 @@ class CreateEventController extends FOSRestController
         //Use the flexible entity Event to set properties
         $event = new Event([
             'name'     => $request->get('name'),
-            'max_registration'  => $request->get('max_registration'),
-            'timespan' => '[' . $request->get('start_date') . ',' . $request->get('end_date') . ']'
+            'timespan' => '[' . $request->get('start_date') . ',' . $request->get('end_date') . ']',
+            'max_register'  => $request->get('max_register')
         ]);
 
         $this->get('pomm')
@@ -36,7 +36,7 @@ class CreateEventController extends FOSRestController
             ->getModel(EventModel::class)
             ->insertOne($event);
 
-        $view = $this->view('CREATE controller', 200);
+        $view = $this->view('Event created', 200);
         return $this->handleView($view);
     }
 }

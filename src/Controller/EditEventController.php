@@ -31,7 +31,6 @@ class EditEventController extends FOSRestController
         $event = $event_model->findByPk(['event_id' => $eventId]);
 
         if ($event) {
-
             //Change the EventModel values and update it
             $event 
                 ->setName($request->get('name'))
@@ -43,7 +42,7 @@ class EditEventController extends FOSRestController
                     ['name', 'timespan', 'updated_at']
                 );
 
-            $view = $this->view($event, 200);
+            $view = $this->view("Edition confirmed", 200);
         } else {
             $view = $this->view("No event with this id", 404);
         }

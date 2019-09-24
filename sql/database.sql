@@ -6,7 +6,7 @@ CREATE TABLE application.event (
   updated_at        TIMESTAMP WITHOUT TIME ZONE   NULL,
   name              VARCHAR                       NOT NULL,
   timespan          TSRANGE                       NULL,
-  max_registration INTEGER                       NOT NULL
+  max_register INTEGER                       NOT NULL
 );
 
 COMMENT ON TABLE application.event IS 'Event';
