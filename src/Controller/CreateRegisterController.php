@@ -44,7 +44,7 @@ class CreateRegisterController extends FOSRestController
             ->findByPk(['event_id' => $request->get('event_id')]);
 
             if ($count >= $event->get('max_register')) {
-                $view = $this->view('There are too many registrations on this event', 500);
+                $view = $this->view('There are too many registrations on this event', 403);
             } else {
                 //Use the flexible entity Register to set properties
                 $register = new Register([

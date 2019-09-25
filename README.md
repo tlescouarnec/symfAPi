@@ -1,4 +1,8 @@
-API en symfony crée par Thomas Le Scouarnec
+API en symfony créée par Thomas Le Scouarnec
+
+Instalation : git clone git@github.com:tlescouarnec/symfApi.git puis composer install
+
+Vous pouvez créer votre base de donnée à partir des fichiers situés dans le dossier sql.
 
 #Liste des routes:
 
