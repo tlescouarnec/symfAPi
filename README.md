@@ -1,7 +1,9 @@
 API en symfony crée par Thomas Le Scouarnec
 
-##Liste des routes:
+#Liste des routes:
+
 Pour les events:
+
     POST /event/create
     json exemple :
         {
@@ -22,6 +24,7 @@ Pour les events:
     DELETE /event/delete/{eventId}
 
 Pour la partie Register:
+
     POST /register/create
     json exemple :
         {

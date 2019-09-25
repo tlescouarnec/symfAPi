@@ -24,6 +24,15 @@ class CreateEventController extends FOSRestController
      */
     public function createEvent(Request $request)
     {
+        //Basic verifications, i might put this in a service if i don't make Symfony constraints work with pomm
+        if (!strtotime($request->get('start_date')) || !strtotime($request->get('end_date'))) {
+            $view = $this->view('Dates not valid', 403);
+            return $this->handleView($view);
+        } elseif (empty($request->get('name'))) {
+            $view = $this->view('A name must be set', 403);
+            return $this->handleView($view);
+        }
+
         //Use the flexible entity Event to set properties
         $event = new Event([
             'name'     => $request->get('name'),
@@ -36,7 +45,6 @@ class CreateEventController extends FOSRestController
             ->getModel(EventModel::class)
             ->insertOne($event);
 
-        $view = $this->view('Event created', 200);
-        return $this->handleView($view);
+        return $this->handleView($this->view('Event created', 200));
     }
 }
